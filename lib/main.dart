@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/router/app_routes.dart';
+import 'package:movies_app/themes/movies_app_theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: MoviesAppRoutes.initalRoute,
       routes: MoviesAppRoutes.getAppRoutes(),
+      theme: MoviesAppTheme.lightTheme,
     );
   }
 }

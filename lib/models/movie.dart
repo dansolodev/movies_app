@@ -51,4 +51,11 @@ class Movie {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
       );
+
+  get fullposterImg {
+    if (posterPath != null) {
+      return 'https://image.tmdb.org/t/p/w500$posterPath';
+    }
+    return "https://i.stack.imgur.com/GNhxO.png";
+  }
 }

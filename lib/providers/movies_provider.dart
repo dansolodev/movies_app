@@ -3,9 +3,11 @@ import 'package:http/http.dart' as http;
 import 'package:movies_app/models/models.dart';
 
 class MoviesProvider extends ChangeNotifier {
-  String _baseUrl = 'api.themoviedb.org';
-  String _apiKey = '00c9b98fea02674969fcc3d58d3f0f05';
-  String _language = 'es-ES';
+  final String _baseUrl = 'api.themoviedb.org';
+  final String _apiKey = '00c9b98fea02674969fcc3d58d3f0f05';
+  final String _language = 'es-ES';
+
+  List<Movie> onDisplayMovie = [];
 
   MoviesProvider() {
     getOnDisplayMovies();
@@ -20,7 +22,8 @@ class MoviesProvider extends ChangeNotifier {
 
     // Await the http get response, then decode the json-formatted response.
     var response = await http.get(url);
-    final respons = NowPlayingResponse.fromRawJson(response.body);
-    print(respons.results[0].title);
+    final nowPlayingResponse = NowPlayingResponse.fromRawJson(response.body);
+    onDisplayMovie = nowPlayingResponse.results;
+    notifyListeners();
   }
 }

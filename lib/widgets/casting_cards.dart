@@ -60,12 +60,12 @@ class _CastCard extends StatelessWidget {
               placeholder: const AssetImage('assets/no-image.jpg'),
               image: NetworkImage(actor.fullProfilePath),
               width: 100,
-              height: 140,
+              height: 130,
               fit: BoxFit.cover,
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 4,
           ),
           Text(
             actor.name,

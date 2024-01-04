@@ -106,13 +106,13 @@ class _MoviePoster extends StatelessWidget {
                 placeholder: const AssetImage('assets/no-image.jpg'),
                 image: NetworkImage(movie.fullposterImg),
                 width: 130,
-                height: 180,
+                height: 176,
                 fit: BoxFit.cover,
               ),
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 2,
           ),
           Text(
             movie.title,

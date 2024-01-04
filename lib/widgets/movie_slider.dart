@@ -2,29 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/models/models.dart';
 import '../router/app_routes.dart';
 
-class MovieSlider extends StatelessWidget {
+class MovieSlider extends StatefulWidget {
   final List<Movie> popularMovies;
   final String? headerSection;
+  final Function onNextPage;
 
   const MovieSlider({
     super.key,
     required this.popularMovies,
+    required this.onNextPage,
     this.headerSection,
   });
 
   @override
+  State<MovieSlider> createState() => _MovieSliderState();
+}
+
+class _MovieSliderState extends State<MovieSlider> {
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent - 500) {
+        widget.onNextPage();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 260,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (headerSection != null)
+          if (widget.headerSection != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                headerSection!,
+                widget.headerSection!,
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -34,10 +54,11 @@ class MovieSlider extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
+              controller: scrollController,
               scrollDirection: Axis.horizontal,
-              itemCount: popularMovies.length,
+              itemCount: widget.popularMovies.length,
               itemBuilder: (_, index) {
-                final movie = popularMovies[index];
+                final movie = widget.popularMovies[index];
                 return _MoviePoster(
                   movie: movie,
                 );
@@ -47,6 +68,12 @@ class MovieSlider extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // Este se llama cuando el widget se va a destruir
+    super.dispose();
   }
 }
 

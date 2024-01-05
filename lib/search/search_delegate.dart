@@ -90,13 +90,13 @@ class _MovieItem extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: SizedBox(
           width: double.infinity,
-          height: 140,
+          height: 150,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 width: 100,
-                height: 140,
+                height: 150,
                 child: Expanded(
                   child: ClipRRect(
                     borderRadius: const BorderRadius.only(
@@ -134,6 +134,9 @@ class _MovieItem extends StatelessWidget {
                       style: textTheme.bodyMedium,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(
+                      height: 6,
                     ),
                     Row(
                       children: [

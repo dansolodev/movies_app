@@ -31,10 +31,12 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final moviesProviders = Provider.of<MoviesProvider>(context, listen: false);
     if (query.isEmpty) {
       return const _EmptyContainer();
     }
+
+    final moviesProviders = Provider.of<MoviesProvider>(context, listen: false);
+    moviesProviders.getSuggestionsByQuery(query);
 
     return StreamBuilder(
       stream: moviesProviders.suggestionStream,

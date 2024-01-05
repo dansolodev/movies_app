@@ -55,9 +55,7 @@ class MovieSearchDelegate extends SearchDelegate {
 }
 
 class _EmptyContainer extends StatelessWidget {
-  const _EmptyContainer({
-    super.key,
-  });
+  const _EmptyContainer();
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +72,6 @@ class _EmptyContainer extends StatelessWidget {
 class _MovieItem extends StatelessWidget {
   final Movie movie;
   const _MovieItem({
-    super.key,
     required this.movie,
   });
 

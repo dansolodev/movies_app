@@ -16,7 +16,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Películas en cines',
-          style: TextStyle(color: Colors.white),
         ),
         actions: [
           IconButton(

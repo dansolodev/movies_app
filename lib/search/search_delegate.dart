@@ -87,7 +87,7 @@ class _MovieItem extends StatelessWidget {
       ),
       child: Card(
         elevation: 3,
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: SizedBox(
           width: double.infinity,
           height: 150,
@@ -109,7 +109,7 @@ class _MovieItem extends StatelessWidget {
                         placeholder: const AssetImage('assets/no-image.jpg'),
                         image: NetworkImage(movie.fullposterImg),
                         width: 50,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

@@ -19,7 +19,7 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<String> _getJsonData(String path, [int page = 1]) async {
-    var url = Uri.https(
+    final url = Uri.https(
       _baseUrl,
       path,
       {'api_key': _apiKey, 'language': _language, 'page': '$page'},
@@ -53,5 +53,20 @@ class MoviesProvider extends ChangeNotifier {
     final creditsResponse = CreditsResponse.fromRawJson(jsonData);
     moviesCast[movieId] = creditsResponse.cast;
     return creditsResponse.cast;
+  }
+
+  Future<List<Movie>> searchMovies(String query) async {
+    final url = Uri.https(
+      _baseUrl,
+      '/3/search/movie',
+      {'api_key': _apiKey, 'language': _language, 'query': query},
+    );
+
+    // Await the http get response, then decode the json-formatted response.
+    var response = await http.get(url);
+    final searchMoviesResponse =
+        SearchMoviesResponse.fromRawJson(response.body);
+
+    return searchMoviesResponse.results;
   }
 }

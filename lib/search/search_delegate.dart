@@ -26,7 +26,7 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text('buildResults');
+    return const Text('buildResults');
   }
 
   @override
@@ -36,8 +36,8 @@ class MovieSearchDelegate extends SearchDelegate {
       return const _EmptyContainer();
     }
 
-    return FutureBuilder(
-      future: moviesProviders.searchMovies(query),
+    return StreamBuilder(
+      stream: moviesProviders.suggestionStream,
       builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
         if (!snapshot.hasData) {
           return const _EmptyContainer();

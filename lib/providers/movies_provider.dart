@@ -8,7 +8,7 @@ import 'package:movies_app/models/models.dart';
 class MoviesProvider extends ChangeNotifier {
   final String _baseUrl = 'api.themoviedb.org';
   final String _apiKey = '00c9b98fea02674969fcc3d58d3f0f05';
-  final String _language = 'es-ES';
+  final String _language = 'es-MX';
 
   List<Movie> onDisplayMovie = [];
   List<Movie> onPopularMovies = [];
